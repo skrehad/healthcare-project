@@ -1034,6 +1034,7 @@ export namespace Prisma {
   export type UserMinAggregateOutputType = {
     id: string | null
     email: string | null
+    password: string | null
     role: $Enums.UserRole | null
     needPasswordChange: boolean | null
     status: $Enums.UserStatus | null
@@ -1044,6 +1045,7 @@ export namespace Prisma {
   export type UserMaxAggregateOutputType = {
     id: string | null
     email: string | null
+    password: string | null
     role: $Enums.UserRole | null
     needPasswordChange: boolean | null
     status: $Enums.UserStatus | null
@@ -1054,6 +1056,7 @@ export namespace Prisma {
   export type UserCountAggregateOutputType = {
     id: number
     email: number
+    password: number
     role: number
     needPasswordChange: number
     status: number
@@ -1066,6 +1069,7 @@ export namespace Prisma {
   export type UserMinAggregateInputType = {
     id?: true
     email?: true
+    password?: true
     role?: true
     needPasswordChange?: true
     status?: true
@@ -1076,6 +1080,7 @@ export namespace Prisma {
   export type UserMaxAggregateInputType = {
     id?: true
     email?: true
+    password?: true
     role?: true
     needPasswordChange?: true
     status?: true
@@ -1086,6 +1091,7 @@ export namespace Prisma {
   export type UserCountAggregateInputType = {
     id?: true
     email?: true
+    password?: true
     role?: true
     needPasswordChange?: true
     status?: true
@@ -1169,6 +1175,7 @@ export namespace Prisma {
   export type UserGroupByOutputType = {
     id: string
     email: string
+    password: string
     role: $Enums.UserRole
     needPasswordChange: boolean
     status: $Enums.UserStatus
@@ -1196,6 +1203,7 @@ export namespace Prisma {
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
+    password?: boolean
     role?: boolean
     needPasswordChange?: boolean
     status?: boolean
@@ -1208,6 +1216,7 @@ export namespace Prisma {
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
+    password?: boolean
     role?: boolean
     needPasswordChange?: boolean
     status?: boolean
@@ -1218,6 +1227,7 @@ export namespace Prisma {
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
+    password?: boolean
     role?: boolean
     needPasswordChange?: boolean
     status?: boolean
@@ -1228,6 +1238,7 @@ export namespace Prisma {
   export type UserSelectScalar = {
     id?: boolean
     email?: boolean
+    password?: boolean
     role?: boolean
     needPasswordChange?: boolean
     status?: boolean
@@ -1235,7 +1246,7 @@ export namespace Prisma {
     updateAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "role" | "needPasswordChange" | "status" | "createdAt" | "updateAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "role" | "needPasswordChange" | "status" | "createdAt" | "updateAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | User$adminArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1251,6 +1262,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       email: string
+      password: string
       role: $Enums.UserRole
       needPasswordChange: boolean
       status: $Enums.UserStatus
@@ -1682,6 +1694,7 @@ export namespace Prisma {
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
+    readonly password: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'UserRole'>
     readonly needPasswordChange: FieldRef<"User", 'Boolean'>
     readonly status: FieldRef<"User", 'UserStatus'>
@@ -3231,6 +3244,7 @@ export namespace Prisma {
   export const UserScalarFieldEnum: {
     id: 'id',
     email: 'email',
+    password: 'password',
     role: 'role',
     needPasswordChange: 'needPasswordChange',
     status: 'status',
@@ -3370,6 +3384,7 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     needPasswordChange?: BoolFilter<"User"> | boolean
     status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
@@ -3381,6 +3396,7 @@ export namespace Prisma {
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
     needPasswordChange?: SortOrder
     status?: SortOrder
@@ -3395,6 +3411,7 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
+    password?: StringFilter<"User"> | string
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     needPasswordChange?: BoolFilter<"User"> | boolean
     status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
@@ -3406,6 +3423,7 @@ export namespace Prisma {
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
     needPasswordChange?: SortOrder
     status?: SortOrder
@@ -3422,6 +3440,7 @@ export namespace Prisma {
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
+    password?: StringWithAggregatesFilter<"User"> | string
     role?: EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
     needPasswordChange?: BoolWithAggregatesFilter<"User"> | boolean
     status?: EnumUserStatusWithAggregatesFilter<"User"> | $Enums.UserStatus
@@ -3502,6 +3521,7 @@ export namespace Prisma {
   export type UserCreateInput = {
     id?: string
     email: string
+    password: string
     role: $Enums.UserRole
     needPasswordChange?: boolean
     status?: $Enums.UserStatus
@@ -3513,6 +3533,7 @@ export namespace Prisma {
   export type UserUncheckedCreateInput = {
     id?: string
     email: string
+    password: string
     role: $Enums.UserRole
     needPasswordChange?: boolean
     status?: $Enums.UserStatus
@@ -3524,6 +3545,7 @@ export namespace Prisma {
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     needPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
@@ -3535,6 +3557,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     needPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
@@ -3546,6 +3569,7 @@ export namespace Prisma {
   export type UserCreateManyInput = {
     id?: string
     email: string
+    password: string
     role: $Enums.UserRole
     needPasswordChange?: boolean
     status?: $Enums.UserStatus
@@ -3556,6 +3580,7 @@ export namespace Prisma {
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     needPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
@@ -3566,6 +3591,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     needPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
@@ -3707,6 +3733,7 @@ export namespace Prisma {
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
     needPasswordChange?: SortOrder
     status?: SortOrder
@@ -3717,6 +3744,7 @@ export namespace Prisma {
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
     needPasswordChange?: SortOrder
     status?: SortOrder
@@ -3727,6 +3755,7 @@ export namespace Prisma {
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
     needPasswordChange?: SortOrder
     status?: SortOrder
@@ -4169,6 +4198,7 @@ export namespace Prisma {
   export type UserCreateWithoutAdminInput = {
     id?: string
     email: string
+    password: string
     role: $Enums.UserRole
     needPasswordChange?: boolean
     status?: $Enums.UserStatus
@@ -4179,6 +4209,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutAdminInput = {
     id?: string
     email: string
+    password: string
     role: $Enums.UserRole
     needPasswordChange?: boolean
     status?: $Enums.UserStatus
@@ -4205,6 +4236,7 @@ export namespace Prisma {
   export type UserUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     needPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
@@ -4215,6 +4247,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     needPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
