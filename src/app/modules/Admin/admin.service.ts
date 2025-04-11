@@ -47,7 +47,13 @@ const getAllFromDB = async (params: any, options: any) => {
             createdAt: "desc",
           },
   });
-  return result;
+  return {
+    meta: {
+      page,
+      limit,
+    },
+    data: result,
+  };
 };
 
 export const AdminService = {
