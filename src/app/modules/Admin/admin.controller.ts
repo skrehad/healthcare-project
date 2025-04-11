@@ -1,7 +1,9 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { AdminService } from "./admin.service";
 import { adminFilterableFields } from "./admin.constant";
 import pick from "../../../shared/pick";
+import sendResponse from "../../../shared/sendResponse";
+import httpStatus from "http-status";
 
 const getAllFromDB = async (req: Request, res: Response) => {
   try {
@@ -43,7 +45,47 @@ const getSingleIdFromDB = async (req: Request, res: Response) => {
   }
 };
 
+const updateIntoDB = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { id } = req.params;
+  try {
+    const result = await AdminService.updateIntoDB(id, req.body);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "Admin data updated!",
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const deleteFromDB = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { id } = req.params;
+  try {
+    const result = await AdminService.deleteFromDB(id);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "Admin data deleted!",
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
 export const AdminController = {
   getAllFromDB,
   getSingleIdFromDB,
+  updateIntoDB,
+  deleteFromDB,
 };
