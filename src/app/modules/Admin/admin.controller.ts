@@ -5,7 +5,11 @@ import pick from "../../../shared/pick";
 import sendResponse from "../../../shared/sendResponse";
 import httpStatus from "http-status";
 
-const getAllFromDB = async (req: Request, res: Response) => {
+const getAllFromDB = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     // console.log(req.query)
     const filters = pick(req.query, adminFilterableFields);
@@ -18,16 +22,16 @@ const getAllFromDB = async (req: Request, res: Response) => {
       meta: result.meta,
       data: result.data,
     });
-  } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      message: error?.name || "Something went wrong",
-      error: error,
-    });
+  } catch (err) {
+    next(err);
   }
 };
 
-const getSingleIdFromDB = async (req: Request, res: Response) => {
+const getSingleIdFromDB = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const { id } = req.params;
   try {
     const result = await AdminService.getSingleIdFromDB(id);
@@ -36,12 +40,8 @@ const getSingleIdFromDB = async (req: Request, res: Response) => {
       message: "Single data fetched!",
       data: result,
     });
-  } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      message: error?.name || "Something went wrong",
-      error: error,
-    });
+  } catch (err) {
+    next(err);
   }
 };
 
@@ -83,9 +83,29 @@ const deleteFromDB = async (
   }
 };
 
+const softDeleteFromDB = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { id } = req.params;
+  try {
+    const result = await AdminService.softDeleteFromDB(id);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "Admin data deleted!",
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
 export const AdminController = {
   getAllFromDB,
   getSingleIdFromDB,
   updateIntoDB,
   deleteFromDB,
+  softDeleteFromDB,
 };
