@@ -9,7 +9,6 @@ const loginUser = catchAsync(async (req: Request, res: Response) => {
 
   const { refreshToken } = result;
 
-  // added refresh token
   res.cookie("refreshToken", refreshToken, {
     secure: false,
     httpOnly: true,
