@@ -11,6 +11,7 @@ const loginUser = async (payload: { email: string; password: string }) => {
     },
   });
 
+  // compare password
   const isCorrectPassword: boolean = await bcrypt.compare(
     payload.password,
     userData.password
@@ -24,6 +25,7 @@ const loginUser = async (payload: { email: string; password: string }) => {
       email: userData.email,
       role: userData.role,
     },
+    // secret
     "abcdefg",
     "5m"
   );
@@ -33,7 +35,8 @@ const loginUser = async (payload: { email: string; password: string }) => {
       email: userData.email,
       role: userData.role,
     },
-    "abcdefghgijklmnop",
+    // secret
+    "abcdefghijklmnop",
     "30d"
   );
 
@@ -47,7 +50,7 @@ const loginUser = async (payload: { email: string; password: string }) => {
 const refreshToken = async (token: string) => {
   let decodedData;
   try {
-    decodedData = jwtHelpers.verifyToken(token, "abcdefghgijklmnop");
+    decodedData = jwtHelpers.verifyToken(token, "abcdefghijklmnop");
   } catch (err) {
     throw new Error("You are not authorized!");
   }
