@@ -55,9 +55,11 @@ const refreshToken = async (token: string) => {
     throw new Error("You are not authorized!");
   }
 
+  // is user active or delete or block from data
   const userData = await prisma.user.findUniqueOrThrow({
     where: {
       email: decodedData.email,
+      // only active user can login
       status: UserStatus.ACTIVE,
     },
   });
