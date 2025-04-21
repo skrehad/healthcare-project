@@ -88,6 +88,7 @@ const refreshToken = async (token: string) => {
 };
 
 const changePassword = async (user: any, payload: any) => {
+  // if user active then you change password
   const userData = await prisma.user.findUniqueOrThrow({
     where: {
       email: user.email,
