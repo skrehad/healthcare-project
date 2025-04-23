@@ -43,11 +43,11 @@ router.post(
   }
 );
 
-// router.patch(
-//   "/:id/status",
-//   auth(UserRole.SUPER_ADMIN, UserRole.ADMIN),
-//   validateRequest(userValidation.updateStatus),
-//   userController.changeProfileStatus
-// );
+router.patch(
+  "/:id/status",
+  auth(UserRole.SUPER_ADMIN, UserRole.ADMIN),
+  validateRequest(userValidation.updateStatus)
+  // userController.changeProfileStatus
+);
 
 export const userRoutes = router;
