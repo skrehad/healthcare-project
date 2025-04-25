@@ -2,6 +2,7 @@ import {
   Admin,
   Doctor,
   Patient,
+  Prisma,
   PrismaClient,
   UserRole,
 } from "../../../generated/prisma";
@@ -9,6 +10,8 @@ import * as bcrypt from "bcrypt";
 import { IFile } from "../../interfaces/file";
 import { fileUploader } from "../../../helpers/fileUploader";
 import { Request } from "express";
+import { paginationHelper } from "../../../helpers/paginationHelper";
+import { adminSearchAbleFields } from "../Admin/admin.constant";
 
 const prisma = new PrismaClient();
 
