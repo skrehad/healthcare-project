@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get(
   "/",
-  // auth(UserRole.SUPER_ADMIN, UserRole.ADMIN),
+  auth(UserRole.SUPER_ADMIN, UserRole.ADMIN),
   userController.getAllUserFromDB
 );
 
@@ -46,8 +46,8 @@ router.post(
 router.patch(
   "/:id/status",
   auth(UserRole.SUPER_ADMIN, UserRole.ADMIN),
-  validateRequest(userValidation.updateStatus)
-  // userController.changeProfileStatus
+  validateRequest(userValidation.updateStatus),
+  userController.changeProfileStatus
 );
 
 export const userRoutes = router;
