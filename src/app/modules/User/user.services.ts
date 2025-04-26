@@ -152,6 +152,20 @@ const getAllUserFromDB = async (params: any, options: any) => {
         : {
             createdAt: "desc",
           },
+
+    // for which which information want to see if we cannot this select item then all information see like password also
+    select: {
+      id: true,
+      email: true,
+      role: true,
+      needPasswordChange: true,
+      status: true,
+      createdAt: true,
+      updateAt: true,
+      admin: true,
+      patient: true,
+      doctor: true,
+    },
   });
 
   const total = await prisma.user.count({

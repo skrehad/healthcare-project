@@ -26,8 +26,8 @@ model User {
 
   // relation
   admin   Admin[]
-  Patient Patient[]
-  Doctor  Doctor[]
+  patient Patient[]
+  doctor  Doctor[]
 
   @@map("users")
 }
