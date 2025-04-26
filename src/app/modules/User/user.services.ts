@@ -11,7 +11,7 @@ import { IFile } from "../../interfaces/file";
 import { fileUploader } from "../../../helpers/fileUploader";
 import { Request } from "express";
 import { paginationHelper } from "../../../helpers/paginationHelper";
-import { adminSearchAbleFields } from "../Admin/admin.constant";
+import { userSearchAbleFields } from "./user.constant";
 
 const prisma = new PrismaClient();
 
@@ -108,15 +108,15 @@ const createPatient = async (req: Request): Promise<Patient> => {
   return result;
 };
 
-const getAllFromDB = async (params: any, options: any) => {
+const getAllUserFromDB = async (params: any, options: any) => {
   const { page, limit, skip } = paginationHelper.calculatePagination(options);
   const { searchTerm, ...filterData } = params;
-  const andConditions: Prisma.AdminWhereInput[] = [];
+  const andConditions: Prisma.UserWhereInput[] = [];
 
   //console.log(filterData);
   if (params.searchTerm) {
     andConditions.push({
-      OR: adminSearchAbleFields.map((field) => ({
+      OR: userSearchAbleFields.map((field) => ({
         [field]: {
           contains: params.searchTerm,
           //   for case sensitive
@@ -137,7 +137,7 @@ const getAllFromDB = async (params: any, options: any) => {
   }
 
   //console.dir(andConditions, { depth: 'infinity' })
-  const whereConditions: Prisma.AdminWhereInput = { AND: andConditions };
+  const whereConditions: Prisma.UserWhereInput = { AND: andConditions };
 
   const result = await prisma.admin.findMany({
     where: whereConditions,
