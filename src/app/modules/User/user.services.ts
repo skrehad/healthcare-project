@@ -137,9 +137,10 @@ const getAllUserFromDB = async (params: any, options: any) => {
   }
 
   //console.dir(andConditions, { depth: 'infinity' })
-  const whereConditions: Prisma.UserWhereInput = { AND: andConditions };
+  const whereConditions: Prisma.UserWhereInput =
+    andConditions.length > 0 ? { AND: andConditions } : {};
 
-  const result = await prisma.admin.findMany({
+  const result = await prisma.user.findMany({
     where: whereConditions,
     skip,
     take: limit,
@@ -153,7 +154,7 @@ const getAllUserFromDB = async (params: any, options: any) => {
           },
   });
 
-  const total = await prisma.admin.count({
+  const total = await prisma.user.count({
     where: whereConditions,
   });
 
@@ -171,4 +172,5 @@ export const userService = {
   createAdmin,
   createDoctor,
   createPatient,
+  getAllUserFromDB,
 };
