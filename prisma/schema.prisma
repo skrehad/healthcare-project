@@ -32,7 +32,6 @@ model User{
 
   @@map("users")
   
-  
 }
 
 model Admin{
@@ -71,7 +70,7 @@ model Doctor {
 
   @@map("doctors")
   doctorSpecialties DoctorSpecialties[]
-  DoctorSchedules DoctorSchedules[]
+  doctorSchedules DoctorSchedules[]
 }
 
 model Patient {
@@ -88,8 +87,8 @@ model Patient {
   user User @relation(references: [email], fields: [email])
 
   @@map("patients")
-  MedicalReport MedicalReport[]
-  PatientHealthData PatientHealthData[]
+  medicalReport MedicalReport[]
+  patientHealthData PatientHealthData[]
 }
 
 model Specialties {
