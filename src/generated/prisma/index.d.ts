@@ -1852,12 +1852,10 @@ export namespace Prisma {
 
   export type PatientCountOutputType = {
     medicalReport: number
-    patientHealthData: number
   }
 
   export type PatientCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     medicalReport?: boolean | PatientCountOutputTypeCountMedicalReportArgs
-    patientHealthData?: boolean | PatientCountOutputTypeCountPatientHealthDataArgs
   }
 
   // Custom InputTypes
@@ -1876,13 +1874,6 @@ export namespace Prisma {
    */
   export type PatientCountOutputTypeCountMedicalReportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MedicalReportWhereInput
-  }
-
-  /**
-   * PatientCountOutputType without action
-   */
-  export type PatientCountOutputTypeCountPatientHealthDataArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PatientHealthDataWhereInput
   }
 
 
@@ -5770,7 +5761,7 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       medicalReport: Prisma.$MedicalReportPayload<ExtArgs>[]
-      patientHealthData: Prisma.$PatientHealthDataPayload<ExtArgs>[]
+      patientHealthData: Prisma.$PatientHealthDataPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6178,7 +6169,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     medicalReport<T extends Patient$medicalReportArgs<ExtArgs> = {}>(args?: Subset<T, Patient$medicalReportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MedicalReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    patientHealthData<T extends Patient$patientHealthDataArgs<ExtArgs> = {}>(args?: Subset<T, Patient$patientHealthDataArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientHealthDataPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    patientHealthData<T extends Patient$patientHealthDataArgs<ExtArgs> = {}>(args?: Subset<T, Patient$patientHealthDataArgs<ExtArgs>>): Prisma__PatientHealthDataClient<$Result.GetResult<Prisma.$PatientHealthDataPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6653,11 +6644,6 @@ export namespace Prisma {
      */
     include?: PatientHealthDataInclude<ExtArgs> | null
     where?: PatientHealthDataWhereInput
-    orderBy?: PatientHealthDataOrderByWithRelationInput | PatientHealthDataOrderByWithRelationInput[]
-    cursor?: PatientHealthDataWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PatientHealthDataScalarFieldEnum | PatientHealthDataScalarFieldEnum[]
   }
 
   /**
@@ -13796,7 +13782,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Patient"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     medicalReport?: MedicalReportListRelationFilter
-    patientHealthData?: PatientHealthDataListRelationFilter
+    patientHealthData?: XOR<PatientHealthDataNullableScalarRelationFilter, PatientHealthDataWhereInput> | null
   }
 
   export type PatientOrderByWithRelationInput = {
@@ -13811,7 +13797,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
     medicalReport?: MedicalReportOrderByRelationAggregateInput
-    patientHealthData?: PatientHealthDataOrderByRelationAggregateInput
+    patientHealthData?: PatientHealthDataOrderByWithRelationInput
   }
 
   export type PatientWhereUniqueInput = Prisma.AtLeast<{
@@ -13829,7 +13815,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Patient"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     medicalReport?: MedicalReportListRelationFilter
-    patientHealthData?: PatientHealthDataListRelationFilter
+    patientHealthData?: XOR<PatientHealthDataNullableScalarRelationFilter, PatientHealthDataWhereInput> | null
   }, "id" | "id" | "email">
 
   export type PatientOrderByWithAggregationInput = {
@@ -14566,7 +14552,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutPatientInput
     medicalReport?: MedicalReportCreateNestedManyWithoutPatientInput
-    patientHealthData?: PatientHealthDataCreateNestedManyWithoutPatientInput
+    patientHealthData?: PatientHealthDataCreateNestedOneWithoutPatientInput
   }
 
   export type PatientUncheckedCreateInput = {
@@ -14580,7 +14566,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     medicalReport?: MedicalReportUncheckedCreateNestedManyWithoutPatientInput
-    patientHealthData?: PatientHealthDataUncheckedCreateNestedManyWithoutPatientInput
+    patientHealthData?: PatientHealthDataUncheckedCreateNestedOneWithoutPatientInput
   }
 
   export type PatientUpdateInput = {
@@ -14594,7 +14580,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutPatientNestedInput
     medicalReport?: MedicalReportUpdateManyWithoutPatientNestedInput
-    patientHealthData?: PatientHealthDataUpdateManyWithoutPatientNestedInput
+    patientHealthData?: PatientHealthDataUpdateOneWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateInput = {
@@ -14608,7 +14594,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     medicalReport?: MedicalReportUncheckedUpdateManyWithoutPatientNestedInput
-    patientHealthData?: PatientHealthDataUncheckedUpdateManyWithoutPatientNestedInput
+    patientHealthData?: PatientHealthDataUncheckedUpdateOneWithoutPatientNestedInput
   }
 
   export type PatientCreateManyInput = {
@@ -15436,17 +15422,12 @@ export namespace Prisma {
     none?: MedicalReportWhereInput
   }
 
-  export type PatientHealthDataListRelationFilter = {
-    every?: PatientHealthDataWhereInput
-    some?: PatientHealthDataWhereInput
-    none?: PatientHealthDataWhereInput
+  export type PatientHealthDataNullableScalarRelationFilter = {
+    is?: PatientHealthDataWhereInput | null
+    isNot?: PatientHealthDataWhereInput | null
   }
 
   export type MedicalReportOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type PatientHealthDataOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -16024,11 +16005,10 @@ export namespace Prisma {
     connect?: MedicalReportWhereUniqueInput | MedicalReportWhereUniqueInput[]
   }
 
-  export type PatientHealthDataCreateNestedManyWithoutPatientInput = {
-    create?: XOR<PatientHealthDataCreateWithoutPatientInput, PatientHealthDataUncheckedCreateWithoutPatientInput> | PatientHealthDataCreateWithoutPatientInput[] | PatientHealthDataUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: PatientHealthDataCreateOrConnectWithoutPatientInput | PatientHealthDataCreateOrConnectWithoutPatientInput[]
-    createMany?: PatientHealthDataCreateManyPatientInputEnvelope
-    connect?: PatientHealthDataWhereUniqueInput | PatientHealthDataWhereUniqueInput[]
+  export type PatientHealthDataCreateNestedOneWithoutPatientInput = {
+    create?: XOR<PatientHealthDataCreateWithoutPatientInput, PatientHealthDataUncheckedCreateWithoutPatientInput>
+    connectOrCreate?: PatientHealthDataCreateOrConnectWithoutPatientInput
+    connect?: PatientHealthDataWhereUniqueInput
   }
 
   export type MedicalReportUncheckedCreateNestedManyWithoutPatientInput = {
@@ -16038,11 +16018,10 @@ export namespace Prisma {
     connect?: MedicalReportWhereUniqueInput | MedicalReportWhereUniqueInput[]
   }
 
-  export type PatientHealthDataUncheckedCreateNestedManyWithoutPatientInput = {
-    create?: XOR<PatientHealthDataCreateWithoutPatientInput, PatientHealthDataUncheckedCreateWithoutPatientInput> | PatientHealthDataCreateWithoutPatientInput[] | PatientHealthDataUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: PatientHealthDataCreateOrConnectWithoutPatientInput | PatientHealthDataCreateOrConnectWithoutPatientInput[]
-    createMany?: PatientHealthDataCreateManyPatientInputEnvelope
-    connect?: PatientHealthDataWhereUniqueInput | PatientHealthDataWhereUniqueInput[]
+  export type PatientHealthDataUncheckedCreateNestedOneWithoutPatientInput = {
+    create?: XOR<PatientHealthDataCreateWithoutPatientInput, PatientHealthDataUncheckedCreateWithoutPatientInput>
+    connectOrCreate?: PatientHealthDataCreateOrConnectWithoutPatientInput
+    connect?: PatientHealthDataWhereUniqueInput
   }
 
   export type UserUpdateOneRequiredWithoutPatientNestedInput = {
@@ -16067,18 +16046,14 @@ export namespace Prisma {
     deleteMany?: MedicalReportScalarWhereInput | MedicalReportScalarWhereInput[]
   }
 
-  export type PatientHealthDataUpdateManyWithoutPatientNestedInput = {
-    create?: XOR<PatientHealthDataCreateWithoutPatientInput, PatientHealthDataUncheckedCreateWithoutPatientInput> | PatientHealthDataCreateWithoutPatientInput[] | PatientHealthDataUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: PatientHealthDataCreateOrConnectWithoutPatientInput | PatientHealthDataCreateOrConnectWithoutPatientInput[]
-    upsert?: PatientHealthDataUpsertWithWhereUniqueWithoutPatientInput | PatientHealthDataUpsertWithWhereUniqueWithoutPatientInput[]
-    createMany?: PatientHealthDataCreateManyPatientInputEnvelope
-    set?: PatientHealthDataWhereUniqueInput | PatientHealthDataWhereUniqueInput[]
-    disconnect?: PatientHealthDataWhereUniqueInput | PatientHealthDataWhereUniqueInput[]
-    delete?: PatientHealthDataWhereUniqueInput | PatientHealthDataWhereUniqueInput[]
-    connect?: PatientHealthDataWhereUniqueInput | PatientHealthDataWhereUniqueInput[]
-    update?: PatientHealthDataUpdateWithWhereUniqueWithoutPatientInput | PatientHealthDataUpdateWithWhereUniqueWithoutPatientInput[]
-    updateMany?: PatientHealthDataUpdateManyWithWhereWithoutPatientInput | PatientHealthDataUpdateManyWithWhereWithoutPatientInput[]
-    deleteMany?: PatientHealthDataScalarWhereInput | PatientHealthDataScalarWhereInput[]
+  export type PatientHealthDataUpdateOneWithoutPatientNestedInput = {
+    create?: XOR<PatientHealthDataCreateWithoutPatientInput, PatientHealthDataUncheckedCreateWithoutPatientInput>
+    connectOrCreate?: PatientHealthDataCreateOrConnectWithoutPatientInput
+    upsert?: PatientHealthDataUpsertWithoutPatientInput
+    disconnect?: PatientHealthDataWhereInput | boolean
+    delete?: PatientHealthDataWhereInput | boolean
+    connect?: PatientHealthDataWhereUniqueInput
+    update?: XOR<XOR<PatientHealthDataUpdateToOneWithWhereWithoutPatientInput, PatientHealthDataUpdateWithoutPatientInput>, PatientHealthDataUncheckedUpdateWithoutPatientInput>
   }
 
   export type MedicalReportUncheckedUpdateManyWithoutPatientNestedInput = {
@@ -16095,18 +16070,14 @@ export namespace Prisma {
     deleteMany?: MedicalReportScalarWhereInput | MedicalReportScalarWhereInput[]
   }
 
-  export type PatientHealthDataUncheckedUpdateManyWithoutPatientNestedInput = {
-    create?: XOR<PatientHealthDataCreateWithoutPatientInput, PatientHealthDataUncheckedCreateWithoutPatientInput> | PatientHealthDataCreateWithoutPatientInput[] | PatientHealthDataUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: PatientHealthDataCreateOrConnectWithoutPatientInput | PatientHealthDataCreateOrConnectWithoutPatientInput[]
-    upsert?: PatientHealthDataUpsertWithWhereUniqueWithoutPatientInput | PatientHealthDataUpsertWithWhereUniqueWithoutPatientInput[]
-    createMany?: PatientHealthDataCreateManyPatientInputEnvelope
-    set?: PatientHealthDataWhereUniqueInput | PatientHealthDataWhereUniqueInput[]
-    disconnect?: PatientHealthDataWhereUniqueInput | PatientHealthDataWhereUniqueInput[]
-    delete?: PatientHealthDataWhereUniqueInput | PatientHealthDataWhereUniqueInput[]
-    connect?: PatientHealthDataWhereUniqueInput | PatientHealthDataWhereUniqueInput[]
-    update?: PatientHealthDataUpdateWithWhereUniqueWithoutPatientInput | PatientHealthDataUpdateWithWhereUniqueWithoutPatientInput[]
-    updateMany?: PatientHealthDataUpdateManyWithWhereWithoutPatientInput | PatientHealthDataUpdateManyWithWhereWithoutPatientInput[]
-    deleteMany?: PatientHealthDataScalarWhereInput | PatientHealthDataScalarWhereInput[]
+  export type PatientHealthDataUncheckedUpdateOneWithoutPatientNestedInput = {
+    create?: XOR<PatientHealthDataCreateWithoutPatientInput, PatientHealthDataUncheckedCreateWithoutPatientInput>
+    connectOrCreate?: PatientHealthDataCreateOrConnectWithoutPatientInput
+    upsert?: PatientHealthDataUpsertWithoutPatientInput
+    disconnect?: PatientHealthDataWhereInput | boolean
+    delete?: PatientHealthDataWhereInput | boolean
+    connect?: PatientHealthDataWhereUniqueInput
+    update?: XOR<XOR<PatientHealthDataUpdateToOneWithWhereWithoutPatientInput, PatientHealthDataUpdateWithoutPatientInput>, PatientHealthDataUncheckedUpdateWithoutPatientInput>
   }
 
   export type DoctorSpecialtiesCreateNestedManyWithoutSpecialtiesInput = {
@@ -16576,7 +16547,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     medicalReport?: MedicalReportCreateNestedManyWithoutPatientInput
-    patientHealthData?: PatientHealthDataCreateNestedManyWithoutPatientInput
+    patientHealthData?: PatientHealthDataCreateNestedOneWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutUserInput = {
@@ -16589,7 +16560,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     medicalReport?: MedicalReportUncheckedCreateNestedManyWithoutPatientInput
-    patientHealthData?: PatientHealthDataUncheckedCreateNestedManyWithoutPatientInput
+    patientHealthData?: PatientHealthDataUncheckedCreateNestedOneWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutUserInput = {
@@ -17083,11 +17054,6 @@ export namespace Prisma {
     create: XOR<PatientHealthDataCreateWithoutPatientInput, PatientHealthDataUncheckedCreateWithoutPatientInput>
   }
 
-  export type PatientHealthDataCreateManyPatientInputEnvelope = {
-    data: PatientHealthDataCreateManyPatientInput | PatientHealthDataCreateManyPatientInput[]
-    skipDuplicates?: boolean
-  }
-
   export type UserUpsertWithoutPatientInput = {
     update: XOR<UserUpdateWithoutPatientInput, UserUncheckedUpdateWithoutPatientInput>
     create: XOR<UserCreateWithoutPatientInput, UserUncheckedCreateWithoutPatientInput>
@@ -17153,46 +17119,59 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"MedicalReport"> | Date | string
   }
 
-  export type PatientHealthDataUpsertWithWhereUniqueWithoutPatientInput = {
-    where: PatientHealthDataWhereUniqueInput
+  export type PatientHealthDataUpsertWithoutPatientInput = {
     update: XOR<PatientHealthDataUpdateWithoutPatientInput, PatientHealthDataUncheckedUpdateWithoutPatientInput>
     create: XOR<PatientHealthDataCreateWithoutPatientInput, PatientHealthDataUncheckedCreateWithoutPatientInput>
+    where?: PatientHealthDataWhereInput
   }
 
-  export type PatientHealthDataUpdateWithWhereUniqueWithoutPatientInput = {
-    where: PatientHealthDataWhereUniqueInput
+  export type PatientHealthDataUpdateToOneWithWhereWithoutPatientInput = {
+    where?: PatientHealthDataWhereInput
     data: XOR<PatientHealthDataUpdateWithoutPatientInput, PatientHealthDataUncheckedUpdateWithoutPatientInput>
   }
 
-  export type PatientHealthDataUpdateManyWithWhereWithoutPatientInput = {
-    where: PatientHealthDataScalarWhereInput
-    data: XOR<PatientHealthDataUpdateManyMutationInput, PatientHealthDataUncheckedUpdateManyWithoutPatientInput>
+  export type PatientHealthDataUpdateWithoutPatientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    dateOfBirth?: StringFieldUpdateOperationsInput | string
+    bloodGroup?: EnumBloodGroupFieldUpdateOperationsInput | $Enums.BloodGroup
+    hasAllergies?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasDiabetes?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    height?: StringFieldUpdateOperationsInput | string
+    weight?: StringFieldUpdateOperationsInput | string
+    smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dietaryPreferences?: NullableStringFieldUpdateOperationsInput | string | null
+    pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mentalHealthHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    hasPastSurgeries?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentAnxiety?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentDepression?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PatientHealthDataScalarWhereInput = {
-    AND?: PatientHealthDataScalarWhereInput | PatientHealthDataScalarWhereInput[]
-    OR?: PatientHealthDataScalarWhereInput[]
-    NOT?: PatientHealthDataScalarWhereInput | PatientHealthDataScalarWhereInput[]
-    id?: StringFilter<"PatientHealthData"> | string
-    patientId?: StringFilter<"PatientHealthData"> | string
-    gender?: EnumGenderFilter<"PatientHealthData"> | $Enums.Gender
-    dateOfBirth?: StringFilter<"PatientHealthData"> | string
-    bloodGroup?: EnumBloodGroupFilter<"PatientHealthData"> | $Enums.BloodGroup
-    hasAllergies?: BoolNullableFilter<"PatientHealthData"> | boolean | null
-    hasDiabetes?: BoolNullableFilter<"PatientHealthData"> | boolean | null
-    height?: StringFilter<"PatientHealthData"> | string
-    weight?: StringFilter<"PatientHealthData"> | string
-    smokingStatus?: BoolNullableFilter<"PatientHealthData"> | boolean | null
-    dietaryPreferences?: StringNullableFilter<"PatientHealthData"> | string | null
-    pregnancyStatus?: BoolNullableFilter<"PatientHealthData"> | boolean | null
-    mentalHealthHistory?: StringNullableFilter<"PatientHealthData"> | string | null
-    immunizationStatus?: StringNullableFilter<"PatientHealthData"> | string | null
-    hasPastSurgeries?: BoolNullableFilter<"PatientHealthData"> | boolean | null
-    recentAnxiety?: BoolNullableFilter<"PatientHealthData"> | boolean | null
-    recentDepression?: BoolNullableFilter<"PatientHealthData"> | boolean | null
-    maritalStatus?: EnumMaritalStatusFilter<"PatientHealthData"> | $Enums.MaritalStatus
-    createdAt?: DateTimeFilter<"PatientHealthData"> | Date | string
-    updatedAt?: DateTimeFilter<"PatientHealthData"> | Date | string
+  export type PatientHealthDataUncheckedUpdateWithoutPatientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    dateOfBirth?: StringFieldUpdateOperationsInput | string
+    bloodGroup?: EnumBloodGroupFieldUpdateOperationsInput | $Enums.BloodGroup
+    hasAllergies?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    hasDiabetes?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    height?: StringFieldUpdateOperationsInput | string
+    weight?: StringFieldUpdateOperationsInput | string
+    smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dietaryPreferences?: NullableStringFieldUpdateOperationsInput | string | null
+    pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mentalHealthHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    hasPastSurgeries?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentAnxiety?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    recentDepression?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DoctorSpecialtiesCreateWithoutSpecialtiesInput = {
@@ -17443,7 +17422,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutPatientInput
-    patientHealthData?: PatientHealthDataCreateNestedManyWithoutPatientInput
+    patientHealthData?: PatientHealthDataCreateNestedOneWithoutPatientInput
   }
 
   export type PatientUncheckedCreateWithoutMedicalReportInput = {
@@ -17456,7 +17435,7 @@ export namespace Prisma {
     isDeleted?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    patientHealthData?: PatientHealthDataUncheckedCreateNestedManyWithoutPatientInput
+    patientHealthData?: PatientHealthDataUncheckedCreateNestedOneWithoutPatientInput
   }
 
   export type PatientCreateOrConnectWithoutMedicalReportInput = {
@@ -17485,7 +17464,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutPatientNestedInput
-    patientHealthData?: PatientHealthDataUpdateManyWithoutPatientNestedInput
+    patientHealthData?: PatientHealthDataUpdateOneWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutMedicalReportInput = {
@@ -17498,7 +17477,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    patientHealthData?: PatientHealthDataUncheckedUpdateManyWithoutPatientNestedInput
+    patientHealthData?: PatientHealthDataUncheckedUpdateOneWithoutPatientNestedInput
   }
 
   export type DoctorSchedulesCreateWithoutScheduleInput = {
@@ -17762,7 +17741,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     medicalReport?: MedicalReportUpdateManyWithoutPatientNestedInput
-    patientHealthData?: PatientHealthDataUpdateManyWithoutPatientNestedInput
+    patientHealthData?: PatientHealthDataUpdateOneWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateWithoutUserInput = {
@@ -17775,7 +17754,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     medicalReport?: MedicalReportUncheckedUpdateManyWithoutPatientNestedInput
-    patientHealthData?: PatientHealthDataUncheckedUpdateManyWithoutPatientNestedInput
+    patientHealthData?: PatientHealthDataUncheckedUpdateOneWithoutPatientNestedInput
   }
 
   export type PatientUncheckedUpdateManyWithoutUserInput = {
@@ -17895,28 +17874,6 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PatientHealthDataCreateManyPatientInput = {
-    id?: string
-    gender: $Enums.Gender
-    dateOfBirth: string
-    bloodGroup: $Enums.BloodGroup
-    hasAllergies?: boolean | null
-    hasDiabetes?: boolean | null
-    height: string
-    weight: string
-    smokingStatus?: boolean | null
-    dietaryPreferences?: string | null
-    pregnancyStatus?: boolean | null
-    mentalHealthHistory?: string | null
-    immunizationStatus?: string | null
-    hasPastSurgeries?: boolean | null
-    recentAnxiety?: boolean | null
-    recentDepression?: boolean | null
-    maritalStatus?: $Enums.MaritalStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
   export type MedicalReportUpdateWithoutPatientInput = {
     id?: StringFieldUpdateOperationsInput | string
     reportName?: StringFieldUpdateOperationsInput | string
@@ -17937,72 +17894,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     reportName?: StringFieldUpdateOperationsInput | string
     reportLink?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PatientHealthDataUpdateWithoutPatientInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
-    dateOfBirth?: StringFieldUpdateOperationsInput | string
-    bloodGroup?: EnumBloodGroupFieldUpdateOperationsInput | $Enums.BloodGroup
-    hasAllergies?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    hasDiabetes?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    height?: StringFieldUpdateOperationsInput | string
-    weight?: StringFieldUpdateOperationsInput | string
-    smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    dietaryPreferences?: NullableStringFieldUpdateOperationsInput | string | null
-    pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    mentalHealthHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    hasPastSurgeries?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    recentAnxiety?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    recentDepression?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PatientHealthDataUncheckedUpdateWithoutPatientInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
-    dateOfBirth?: StringFieldUpdateOperationsInput | string
-    bloodGroup?: EnumBloodGroupFieldUpdateOperationsInput | $Enums.BloodGroup
-    hasAllergies?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    hasDiabetes?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    height?: StringFieldUpdateOperationsInput | string
-    weight?: StringFieldUpdateOperationsInput | string
-    smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    dietaryPreferences?: NullableStringFieldUpdateOperationsInput | string | null
-    pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    mentalHealthHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    hasPastSurgeries?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    recentAnxiety?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    recentDepression?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PatientHealthDataUncheckedUpdateManyWithoutPatientInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
-    dateOfBirth?: StringFieldUpdateOperationsInput | string
-    bloodGroup?: EnumBloodGroupFieldUpdateOperationsInput | $Enums.BloodGroup
-    hasAllergies?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    hasDiabetes?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    height?: StringFieldUpdateOperationsInput | string
-    weight?: StringFieldUpdateOperationsInput | string
-    smokingStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    dietaryPreferences?: NullableStringFieldUpdateOperationsInput | string | null
-    pregnancyStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    mentalHealthHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    immunizationStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    hasPastSurgeries?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    recentAnxiety?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    recentDepression?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

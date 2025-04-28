@@ -88,7 +88,7 @@ model Patient {
 
   @@map("patients")
   medicalReport MedicalReport[]
-  patientHealthData PatientHealthData[]
+  patientHealthData PatientHealthData?
 }
 
 model Specialties {
