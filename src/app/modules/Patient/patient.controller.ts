@@ -28,7 +28,7 @@ const getByIdFromDB = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Patient retrieval successfully",
+    message: "Patient data find successfully",
     data: result,
   });
 });
