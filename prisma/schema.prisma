@@ -190,7 +190,7 @@ model DoctorSchedules {
   appointmentId String? @unique 
   appointment   Appointment? @relation(fields: [appointmentId], references: [id])
 
-@@id([doctorId, scheduleId])
+  @@id([doctorId, scheduleId])
   @@map("doctor_schedules")
 
 }
@@ -225,7 +225,7 @@ model Payment {
   appointment   Appointment @relation(fields: [appointmentId], references: [id])
 
   amount             Float
-  transactionId      String
+  transactionId      String  @unique
   status             PaymentStatus @default(UNPAID)
   paymentGatewayData Json?
   createdAt          DateTime      @default(now())
