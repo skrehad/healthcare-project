@@ -111,7 +111,6 @@ model DoctorSpecialties {
   @@map("doctor_specialties")
 }
 
-
 model PatientHealthData {
   id                  String        @id @default(uuid())
   patientId           String        @unique
@@ -168,14 +167,13 @@ model DoctorSchedules {
   scheduleId String
   schedule   Schedule @relation(fields: [scheduleId], references: [id])
 
-  isBooked Boolean
+  isBooked Boolean @default(false)
 
   appointmentId String?
 
   @@id([doctorId, scheduleId])
   @@map("doctor_schedules")
 }
-
 
 //  enum
 
