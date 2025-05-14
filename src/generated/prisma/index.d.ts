@@ -4673,11 +4673,13 @@ export namespace Prisma {
   export type DoctorAvgAggregateOutputType = {
     experience: number | null
     appointmentFee: number | null
+    averageRating: number | null
   }
 
   export type DoctorSumAggregateOutputType = {
     experience: number | null
     appointmentFee: number | null
+    averageRating: number | null
   }
 
   export type DoctorMinAggregateOutputType = {
@@ -4695,6 +4697,7 @@ export namespace Prisma {
     currentWorkingPlace: string | null
     designation: string | null
     isDeleted: boolean | null
+    averageRating: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4714,6 +4717,7 @@ export namespace Prisma {
     currentWorkingPlace: string | null
     designation: string | null
     isDeleted: boolean | null
+    averageRating: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4733,6 +4737,7 @@ export namespace Prisma {
     currentWorkingPlace: number
     designation: number
     isDeleted: number
+    averageRating: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -4742,11 +4747,13 @@ export namespace Prisma {
   export type DoctorAvgAggregateInputType = {
     experience?: true
     appointmentFee?: true
+    averageRating?: true
   }
 
   export type DoctorSumAggregateInputType = {
     experience?: true
     appointmentFee?: true
+    averageRating?: true
   }
 
   export type DoctorMinAggregateInputType = {
@@ -4764,6 +4771,7 @@ export namespace Prisma {
     currentWorkingPlace?: true
     designation?: true
     isDeleted?: true
+    averageRating?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4783,6 +4791,7 @@ export namespace Prisma {
     currentWorkingPlace?: true
     designation?: true
     isDeleted?: true
+    averageRating?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4802,6 +4811,7 @@ export namespace Prisma {
     currentWorkingPlace?: true
     designation?: true
     isDeleted?: true
+    averageRating?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -4908,6 +4918,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted: boolean
+    averageRating: number
     createdAt: Date
     updatedAt: Date
     _count: DoctorCountAggregateOutputType | null
@@ -4946,6 +4957,7 @@ export namespace Prisma {
     currentWorkingPlace?: boolean
     designation?: boolean
     isDeleted?: boolean
+    averageRating?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -4972,6 +4984,7 @@ export namespace Prisma {
     currentWorkingPlace?: boolean
     designation?: boolean
     isDeleted?: boolean
+    averageRating?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -4992,6 +5005,7 @@ export namespace Prisma {
     currentWorkingPlace?: boolean
     designation?: boolean
     isDeleted?: boolean
+    averageRating?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -5012,11 +5026,12 @@ export namespace Prisma {
     currentWorkingPlace?: boolean
     designation?: boolean
     isDeleted?: boolean
+    averageRating?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type DoctorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "profilePhoto" | "contactNumber" | "address" | "registrationNumber" | "experience" | "gender" | "appointmentFee" | "qualification" | "currentWorkingPlace" | "designation" | "isDeleted" | "createdAt" | "updatedAt", ExtArgs["result"]["doctor"]>
+  export type DoctorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "profilePhoto" | "contactNumber" | "address" | "registrationNumber" | "experience" | "gender" | "appointmentFee" | "qualification" | "currentWorkingPlace" | "designation" | "isDeleted" | "averageRating" | "createdAt" | "updatedAt", ExtArgs["result"]["doctor"]>
   export type DoctorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     doctorSpecialties?: boolean | Doctor$doctorSpecialtiesArgs<ExtArgs>
@@ -5058,6 +5073,7 @@ export namespace Prisma {
       currentWorkingPlace: string
       designation: string
       isDeleted: boolean
+      averageRating: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["doctor"]>
@@ -5503,6 +5519,7 @@ export namespace Prisma {
     readonly currentWorkingPlace: FieldRef<"Doctor", 'String'>
     readonly designation: FieldRef<"Doctor", 'String'>
     readonly isDeleted: FieldRef<"Doctor", 'Boolean'>
+    readonly averageRating: FieldRef<"Doctor", 'Float'>
     readonly createdAt: FieldRef<"Doctor", 'DateTime'>
     readonly updatedAt: FieldRef<"Doctor", 'DateTime'>
   }
@@ -18521,6 +18538,7 @@ export namespace Prisma {
     currentWorkingPlace: 'currentWorkingPlace',
     designation: 'designation',
     isDeleted: 'isDeleted',
+    averageRating: 'averageRating',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -18814,6 +18832,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
    * Reference to a field of type 'BloodGroup'
    */
   export type EnumBloodGroupFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BloodGroup'>
@@ -18866,20 +18898,6 @@ export namespace Prisma {
    * Reference to a field of type 'PaymentStatus[]'
    */
   export type ListEnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentStatus[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 
@@ -19064,6 +19082,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFilter<"Doctor"> | string
     designation?: StringFilter<"Doctor"> | string
     isDeleted?: BoolFilter<"Doctor"> | boolean
+    averageRating?: FloatFilter<"Doctor"> | number
     createdAt?: DateTimeFilter<"Doctor"> | Date | string
     updatedAt?: DateTimeFilter<"Doctor"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -19089,6 +19108,7 @@ export namespace Prisma {
     currentWorkingPlace?: SortOrder
     designation?: SortOrder
     isDeleted?: SortOrder
+    averageRating?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -19117,6 +19137,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFilter<"Doctor"> | string
     designation?: StringFilter<"Doctor"> | string
     isDeleted?: BoolFilter<"Doctor"> | boolean
+    averageRating?: FloatFilter<"Doctor"> | number
     createdAt?: DateTimeFilter<"Doctor"> | Date | string
     updatedAt?: DateTimeFilter<"Doctor"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -19142,6 +19163,7 @@ export namespace Prisma {
     currentWorkingPlace?: SortOrder
     designation?: SortOrder
     isDeleted?: SortOrder
+    averageRating?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: DoctorCountOrderByAggregateInput
@@ -19169,6 +19191,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringWithAggregatesFilter<"Doctor"> | string
     designation?: StringWithAggregatesFilter<"Doctor"> | string
     isDeleted?: BoolWithAggregatesFilter<"Doctor"> | boolean
+    averageRating?: FloatWithAggregatesFilter<"Doctor"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Doctor"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Doctor"> | Date | string
   }
@@ -20155,6 +20178,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutDoctorInput
@@ -20180,6 +20204,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     doctorSpecialties?: DoctorSpecialtiesUncheckedCreateNestedManyWithoutDoctorInput
@@ -20203,6 +20228,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutDoctorNestedInput
@@ -20228,6 +20254,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     doctorSpecialties?: DoctorSpecialtiesUncheckedUpdateManyWithoutDoctorNestedInput
@@ -20252,6 +20279,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -20270,6 +20298,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -20289,6 +20318,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21391,6 +21421,17 @@ export namespace Prisma {
     not?: NestedEnumGenderFilter<$PrismaModel> | $Enums.Gender
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type DoctorSpecialtiesListRelationFilter = {
     every?: DoctorSpecialtiesWhereInput
     some?: DoctorSpecialtiesWhereInput
@@ -21456,6 +21497,7 @@ export namespace Prisma {
     currentWorkingPlace?: SortOrder
     designation?: SortOrder
     isDeleted?: SortOrder
+    averageRating?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -21463,6 +21505,7 @@ export namespace Prisma {
   export type DoctorAvgOrderByAggregateInput = {
     experience?: SortOrder
     appointmentFee?: SortOrder
+    averageRating?: SortOrder
   }
 
   export type DoctorMaxOrderByAggregateInput = {
@@ -21480,6 +21523,7 @@ export namespace Prisma {
     currentWorkingPlace?: SortOrder
     designation?: SortOrder
     isDeleted?: SortOrder
+    averageRating?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -21499,6 +21543,7 @@ export namespace Prisma {
     currentWorkingPlace?: SortOrder
     designation?: SortOrder
     isDeleted?: SortOrder
+    averageRating?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -21506,6 +21551,7 @@ export namespace Prisma {
   export type DoctorSumOrderByAggregateInput = {
     experience?: SortOrder
     appointmentFee?: SortOrder
+    averageRating?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -21532,6 +21578,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumGenderFilter<$PrismaModel>
     _max?: NestedEnumGenderFilter<$PrismaModel>
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type MedicalReportListRelationFilter = {
@@ -21930,17 +21992,6 @@ export namespace Prisma {
     _min?: NestedEnumPaymentStatusFilter<$PrismaModel>
     _max?: NestedEnumPaymentStatusFilter<$PrismaModel>
   }
-
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
   export type JsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
@@ -22007,22 +22058,6 @@ export namespace Prisma {
 
   export type PaymentSumOrderByAggregateInput = {
     amount?: SortOrder
-  }
-
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -22400,6 +22435,14 @@ export namespace Prisma {
 
   export type EnumGenderFieldUpdateOperationsInput = {
     set?: $Enums.Gender
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type UserUpdateOneRequiredWithoutDoctorNestedInput = {
@@ -23186,14 +23229,6 @@ export namespace Prisma {
     connect?: AppointmentWhereUniqueInput
   }
 
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type AppointmentUpdateOneRequiredWithoutPaymentNestedInput = {
     create?: XOR<AppointmentCreateWithoutPaymentInput, AppointmentUncheckedCreateWithoutPaymentInput>
     connectOrCreate?: AppointmentCreateOrConnectWithoutPaymentInput
@@ -23453,6 +23488,17 @@ export namespace Prisma {
     not?: NestedEnumGenderFilter<$PrismaModel> | $Enums.Gender
   }
 
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -23469,17 +23515,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type NestedEnumGenderWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel>
     in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
@@ -23488,6 +23523,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumGenderFilter<$PrismaModel>
     _max?: NestedEnumGenderFilter<$PrismaModel>
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type NestedEnumBloodGroupFilter<$PrismaModel = never> = {
@@ -23569,22 +23620,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumPaymentStatusFilter<$PrismaModel>
     _max?: NestedEnumPaymentStatusFilter<$PrismaModel>
-  }
-
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
   }
   export type NestedJsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -23721,6 +23756,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     doctorSpecialties?: DoctorSpecialtiesCreateNestedManyWithoutDoctorInput
@@ -23744,6 +23780,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     doctorSpecialties?: DoctorSpecialtiesUncheckedCreateNestedManyWithoutDoctorInput
@@ -23858,6 +23895,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFilter<"Doctor"> | string
     designation?: StringFilter<"Doctor"> | string
     isDeleted?: BoolFilter<"Doctor"> | boolean
+    averageRating?: FloatFilter<"Doctor"> | number
     createdAt?: DateTimeFilter<"Doctor"> | Date | string
     updatedAt?: DateTimeFilter<"Doctor"> | Date | string
   }
@@ -24718,6 +24756,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutDoctorInput
@@ -24742,6 +24781,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     doctorSchedules?: DoctorSchedulesUncheckedCreateNestedManyWithoutDoctorInput
@@ -24803,6 +24843,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutDoctorNestedInput
@@ -24827,6 +24868,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     doctorSchedules?: DoctorSchedulesUncheckedUpdateManyWithoutDoctorNestedInput
@@ -25103,6 +25145,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutDoctorInput
@@ -25127,6 +25170,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     doctorSpecialties?: DoctorSpecialtiesUncheckedCreateNestedManyWithoutDoctorInput
@@ -25223,6 +25267,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutDoctorNestedInput
@@ -25247,6 +25292,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     doctorSpecialties?: DoctorSpecialtiesUncheckedUpdateManyWithoutDoctorNestedInput
@@ -25376,6 +25422,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutDoctorInput
@@ -25400,6 +25447,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     doctorSpecialties?: DoctorSpecialtiesUncheckedCreateNestedManyWithoutDoctorInput
@@ -25596,6 +25644,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutDoctorNestedInput
@@ -25620,6 +25669,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     doctorSpecialties?: DoctorSpecialtiesUncheckedUpdateManyWithoutDoctorNestedInput
@@ -25898,6 +25948,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutDoctorInput
@@ -25922,6 +25973,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     doctorSpecialties?: DoctorSpecialtiesUncheckedCreateNestedManyWithoutDoctorInput
@@ -26038,6 +26090,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutDoctorNestedInput
@@ -26062,6 +26115,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     doctorSpecialties?: DoctorSpecialtiesUncheckedUpdateManyWithoutDoctorNestedInput
@@ -26164,6 +26218,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutDoctorInput
@@ -26188,6 +26243,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     doctorSpecialties?: DoctorSpecialtiesUncheckedCreateNestedManyWithoutDoctorInput
@@ -26304,6 +26360,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutDoctorNestedInput
@@ -26328,6 +26385,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     doctorSpecialties?: DoctorSpecialtiesUncheckedUpdateManyWithoutDoctorNestedInput
@@ -26412,6 +26470,7 @@ export namespace Prisma {
     currentWorkingPlace: string
     designation: string
     isDeleted?: boolean
+    averageRating?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -26503,6 +26562,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     doctorSpecialties?: DoctorSpecialtiesUpdateManyWithoutDoctorNestedInput
@@ -26526,6 +26586,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     doctorSpecialties?: DoctorSpecialtiesUncheckedUpdateManyWithoutDoctorNestedInput
@@ -26549,6 +26610,7 @@ export namespace Prisma {
     currentWorkingPlace?: StringFieldUpdateOperationsInput | string
     designation?: StringFieldUpdateOperationsInput | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

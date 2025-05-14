@@ -157,6 +157,7 @@ exports.Prisma.DoctorScalarFieldEnum = {
   currentWorkingPlace: 'currentWorkingPlace',
   designation: 'designation',
   isDeleted: 'isDeleted',
+  averageRating: 'averageRating',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
