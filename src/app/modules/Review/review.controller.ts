@@ -5,7 +5,7 @@ import httpStatus from "http-status";
 import { ReviewService } from "./review.service";
 import { IAuthUser } from "../../interfaces/common";
 import pick from "../../../shared/pick";
-import { reviewFilterableFields } from "./review.contant";
+import { reviewFilterableFields } from "./review.constant";
 
 const insertIntoDB = catchAsync(
   async (req: Request & { user?: IAuthUser }, res: Response) => {
