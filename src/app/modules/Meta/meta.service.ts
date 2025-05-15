@@ -1,5 +1,4 @@
 import { IAuthUser } from "../../interfaces/common";
-import ApiError from "../../errors/ApiError";
 import prisma from "../../../shared/prisma";
 import { PaymentStatus, UserRole } from "../../../generated/prisma";
 
